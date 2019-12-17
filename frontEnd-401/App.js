@@ -2,16 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
-import NavBar from './components/navbar.js';
+import SignInScreen from './screens/signinScreen';
+import Expo from 'expo'
+import HomeScreen from './screens/homeScreen';
+
 const navigator = createStackNavigator(
   {
-    Home:  NavBar,
+    SignIn:  SignInScreen,
+    Home: HomeScreen
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'SignIn',
     defaultNavigationOptions: {
       title: 'App'
     }
   }
 );
 export default createAppContainer(navigator);
+
+
