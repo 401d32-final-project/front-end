@@ -5,11 +5,13 @@ import {createAppContainer} from 'react-navigation';
 import SignInScreen from './screens/signinScreen';
 import Expo from 'expo'
 import HomeScreen from './screens/homeScreen';
+import SourceScreen from './screens/sourceScreen'
 
 const navigator = createStackNavigator(
   {
     SignIn:  SignInScreen,
-    Home: HomeScreen
+    Home: HomeScreen,
+    Sources: SourceScreen,
   },
   {
     initialRouteName: 'SignIn',

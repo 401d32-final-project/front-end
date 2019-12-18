@@ -1,15 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button, Image} from 'react-native';
-import Form from './form';
+import Form from '../components/form';
 
 const RegisterComponent = (props) => {
   return(
     <View>
       <Image 
-      style={{width: 200, height: 200, alignContent:"center" }}
-      source={require('../assets/icon.png')}
+      style={{ alignContent:"center", marginLeft:"auto", marginRight:"auto",marginTop:20, }}
+      source={require('../assets/newshub.png')}
       />
-    <Text style={styles.textStyle}>News Hub</Text>
     <Form />
     <Button
       onPress={() => props.navigation.navigate('Home')}
