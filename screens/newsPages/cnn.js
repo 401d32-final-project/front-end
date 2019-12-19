@@ -1,8 +1,9 @@
 import React from 'react';
-import {ScrollView,View,  Text, StyleSheet, Button, Image, TouchableOpacity, ActivityIndicator, Linking} from 'react-native';
+import {ScrollView,View,  Text, StyleSheet, Button, Image, TouchableOpacity, ActivityIndicator, Linking, ImageBackground} from 'react-native';
 import Expo from 'expo'
 import { Divider } from 'react-native-elements';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import Head from '../../components/header';
 
  class CNN extends React.Component {
 
@@ -35,7 +36,15 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
     if(this.state.isLoading) {
       return (
         <View style={styles.container}>
-          <ActivityIndicator />
+          <ImageBackground
+            source={require('../../assets/background2.png')}
+            style={{width: '100%', height: '100%'}}
+          >
+            <ActivityIndicator
+              style={styles.loading}
+              size={"large"}
+            />
+          </ImageBackground>
         </View>
       )
     } else {
@@ -45,6 +54,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
           <Divider style={styles.divider}/>
           <Text style={styles.description}>{value.description}</Text>
           <Text 
+            style={styles.url}
           onPress={() =>{
             Linking.openURL(`${value.url}`)
           }
@@ -77,12 +87,18 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
         </View>)
       })
       return (
-        <ScrollView style={styles.container}>
-          <Image 
-            source={require('../../assets/CNN.png')}
-          />
-          {headlines}
-        </ScrollView>
+        <ImageBackground
+          source={require('../../assets/background2.png')}
+          style={{width: '100%', height: '100%'}}>
+          <ScrollView style={styles.container}>
+            <Head />
+            <Image 
+              style={{marginTop: 20}}
+              source={require('../../assets/CNN.png')}
+            />
+            {headlines}
+          </ScrollView>
+        </ImageBackground>
       )
     }
   }
@@ -92,6 +108,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     flexDirection: "column",
+    marginTop:10,
 
   },
   title: {
@@ -102,7 +119,7 @@ const styles = StyleSheet.create({
     marginTop:10,
   },
   divider: { 
-    backgroundColor: 'blue', 
+    backgroundColor: 'black', 
     height: 10,
     width:350,
     marginTop:10,
@@ -115,9 +132,20 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   url: {
-    width: 300,
+    // marginLeft:"auto",
+    marginRight:"auto",
+    marginTop:0,
+    marginBottom:20,
+    fontSize: 20,
+    backgroundColor: "#FFDAB9",
+    borderRadius: 50,
+    padding: 5,
+  },
+  loading: {
+    marginTop: "auto",
+    marginBottom: "auto",
+    color: "black",
   }
-
 })
 
 export default CNN;

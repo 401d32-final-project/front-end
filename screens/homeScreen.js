@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Button, Image, TouchableOpacity, ImageBackground} from 'react-native';
 import { createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer, StackNavigator} from 'react-navigation';
 import Expo from 'expo'
@@ -14,19 +14,23 @@ const HomeScreen = (props) => {
     // console.log(props.navigation.state.params.token);
     return (
       <View style={styles.container}>
-        <Head />
-        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
-          <Image 
-            source={require('../assets/CNN.png')}
-          />
-        </TouchableOpacity>
+        <ImageBackground
+          source={require('../assets/background2.png')}
+          style={{width: '100%', height: '100%'}}
+        >
+          <Head />
+          <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
+            <Image 
+              source={require('../assets/CNN.png')}
+              />
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('SignIn')}>
-        <Image 
-            source={require('../assets/placeholder.png')}
-          />
-        </TouchableOpacity>
-        <Foot />
+          <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Saved')}>
+          <Image 
+              source={require('../assets/saved.png')}
+              />
+          </TouchableOpacity>
+        </ImageBackground>
       </View>
     )
   }

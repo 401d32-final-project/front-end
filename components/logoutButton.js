@@ -10,18 +10,20 @@ const LogOutButton = (props) => {
         props.navigation.navigate('SignIn');
       }}
     >
-      <Text style={styles.logout}>
-        Log Out
-      </Text>
+      <Image 
+         style={styles.icon}
+        source={require('../assets/logout.png')}
+      />
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-    logout: {
-        fontSize: 20
-    }
-})
+    icon: {
+      marginBottom: 10,
+     
+  }
+});
 
 
 // withNavigation returns a component that wraps LogOutButton and passes in the

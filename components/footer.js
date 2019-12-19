@@ -9,7 +9,7 @@ const Foot = () => {
   return (
     <View style={styles.container}>
       <View >
-        <Text>NewsHub Inc. {'\u00A9'}2019</Text>
+        <Text style={styles.text}>NewsHub Inc. {'\u00A9'}2019</Text>
       </View>
     </View>
   )
@@ -17,8 +17,13 @@ const Foot = () => {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:90,
 
   },
+  text: {
+    fontSize:20,
+    fontFamily:"monospace"
+  }
 
 })
 
