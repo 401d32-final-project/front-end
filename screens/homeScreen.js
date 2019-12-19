@@ -6,6 +6,11 @@ import Expo from 'expo'
 import Head from '../components/header';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import Foot from '../components/footer'
+import Messages from '../messages';
+import createStore from '../store-messages';
+import { Provider } from 'react-redux';
+
+const store = createStore();
 
 const HomeScreen = (props) => {
     // if (!props.navigation.state.params.token) {
@@ -22,9 +27,9 @@ const HomeScreen = (props) => {
           <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
             <Image 
               source={require('../assets/CNN.png')}
+
               />
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Saved')}>
           <Image 
               source={require('../assets/saved.png')}
@@ -52,4 +57,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HomeScreen
+export default HomeScreen;
