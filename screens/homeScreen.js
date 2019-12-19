@@ -1,31 +1,28 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button, Image, TouchableOpacity} from 'react-native';
-import {Header} from 'react-native-elements';
 import { createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer, StackNavigator} from 'react-navigation';
-// import NavBar from './components/navbar.js';
-// import SignIn from './components/signinPage';
 import Expo from 'expo'
-import Search from '../components/searchBar'
-import { LinearGradient } from 'expo'
+import Head from '../components/header';
+import { Header } from 'react-native/Libraries/NewAppScreen';
+import Foot from '../components/footer'
 
 const HomeScreen = (props) => {
     return (
       <View style={styles.container}>
-      <Search />
+        <Head />
+        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
+          <Image 
+            source={require('../assets/CNN.png')}
+          />
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('SignIn')}>
+        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('SignIn')}>
         <Image 
-          source={require('../assets/placeholder.png')}
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
-      <Image 
-          source={require('../assets/placeholder.png')}
-        />
-      </TouchableOpacity>
-
+            source={require('../assets/placeholder.png')}
+          />
+        </TouchableOpacity>
+        <Foot />
       </View>
     )
   }
@@ -45,7 +42,6 @@ const styles = StyleSheet.create({
   searchbar: {
     width: 300,
   }
-
 })
 
 export default HomeScreen
