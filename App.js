@@ -10,6 +10,7 @@ import AP from './screens/newsPages/ap';
 import CNN from './screens/newsPages/cnn';
 import SignUpScreen from './screens/signup/signupScreen';
 import Messages from './store-messages';
+import SavedScreen from './screens/savedScreen';
 
 const navigator = createStackNavigator(
   {
@@ -22,16 +23,15 @@ const navigator = createStackNavigator(
     // FoxNews: Fox,
     // NewYork: NY,
     // BritishNews: BBC,
-    SignUp: SignUpScreen
+    SignUp: SignUpScreen,
+    Saved: SavedScreen,
   },
   {
     initialRouteName: 'SignIn',
-    defaultNavigationOptions: {
-      title: 'App'
-    }
-  }
+    // defaultNavigationOptions: {
+    //   title: 'App',
+    // },
+  },
 );
 
 export default createAppContainer(navigator);
-
-

@@ -1,36 +1,59 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import {View, Text, StyleSheet, Button, Image, KeyboardAvoidingView, ScrollView, ImageBackground, TouchableOpacity} from 'react-native';
 import Form from '../components/form';
-// import Signup from './signupScreen.js';
 
 const RegisterComponent = (props) => {
   return(
-    <View>
-      <Image 
-        style={{ alignContent:"center", marginLeft:"auto", marginRight:"auto",marginTop:20, }}
-        source={require('../assets/newshub.png')}
-        />
-      <Form />
+      <KeyboardAvoidingView 
+      behavior="padding" enabled
+      style={{ flex: 1}}
+      >
+        <ScrollView>
+        <ImageBackground
+          source={require('../assets/background2.png')}
+          style={{width: '100%', height: '100%'}}
+        >
+          <View>
+            <Image 
+              style={{ marginLeft:"auto", marginRight:"auto",marginTop:50, }}
+              source={require('../assets/newshub.png')}
+              />
+            <Form 
+              styles={styles.input}
+            />
+            <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Home')}>
+              <Text style={styles.textStyle}>Sign In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('SignUp')}>
+              <Text style={styles.textStyle}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+          </ImageBackground>
+        </ScrollView>
+      </KeyboardAvoidingView>
 
-      <Button
-        onPress={() => props.navigation.navigate('Home')}
-        title="Sign In"
-      />
-      <Button
-        style={{width: 50, height: 10}}
-        onPress={() => props.navigation.navigate('SignUp')}
-        title="Sign Up"
-      />
-    </View>
   )
 }
 
 const styles = StyleSheet.create({
 
   textStyle: {
+    fontSize: 20,
+    alignItems:"center",
+    fontFamily: "monospace"
+  },
+  button: {
+    marginLeft:"auto",
+    marginRight:"auto",
+    marginTop:0,
+    marginBottom:20,
     fontSize: 50,
     alignItems:"center"
+    backgroundColor: "#FFDAB9",
+    borderRadius: 50,
+    padding: 5,
   }
+
 })
 
 export default RegisterComponent

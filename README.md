@@ -2,8 +2,8 @@
 
 ## Team members
 #### Matthew Heyert
-####Corey Marchand
-####Avrey Brown
+#### Corey Marchand
+#### Avrey Brown
 
 ## Project Overview
 - Our plan is to build a new aggregator site
