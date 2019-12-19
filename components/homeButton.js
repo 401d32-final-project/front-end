@@ -11,11 +11,19 @@ const MyBackButton = (props) => {
         }}
       >
         <Image 
+          style={styles.icon}
           source={require('../assets/house.png')}
         />
       </TouchableOpacity>
     );
   }
+
+  const styles = StyleSheet.create({
+    icon: {
+      marginBottom: 20,
+        
+    }
+})
 
 
 // withNavigation returns a component that wraps MyBackButton and passes in the

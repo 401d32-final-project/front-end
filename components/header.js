@@ -3,6 +3,7 @@ import { Header } from 'react-native-elements';
 import {View, Text, StyleSheet, Button, Image, TouchableOpacity} from 'react-native';
 import MyBackButton from './homeButton';
 import LogOutButton from './logoutButton';
+import NewsHub from './newsHubIcon';
 
 const Head = (props) => {
   return (
@@ -10,7 +11,12 @@ const Head = (props) => {
       <View >
         <Header 
         leftComponent={<MyBackButton />}
+        centerComponent={<NewsHub height={20}/>}
         rightComponent={<LogOutButton />}
+        containerStyle={{
+          backgroundColor: 'transparent',
+          justifyContent: 'space-around',
+        }}
         />
       </View>
     </View>

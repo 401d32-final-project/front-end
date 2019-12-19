@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import {View, Text, StyleSheet, Button, Image, ImageBackground} from 'react-native';
 
 import t from 'tcomb-form-native';
 
@@ -19,6 +19,7 @@ export default class goodForm extends Component {
             <Form type={User} />
           </View>
         </View>
+
       );
     }
   }
@@ -28,7 +29,7 @@ export default class goodForm extends Component {
       justifyContent: 'center',
       marginTop: 50,
       padding: 20,
-      backgroundColor: '#ffffff',
+      backgroundColor: 'rgba(52, 52, 52, .0)'
     },
   });
 
