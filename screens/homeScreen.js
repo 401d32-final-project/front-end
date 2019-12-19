@@ -18,7 +18,6 @@ const HomeScreen = (props) => {
     // }
     // console.log(props.navigation.state.params.token);
     return (
-      <Provider store={store}>
         <View style={styles.container}>
           <Head />
           <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
@@ -34,9 +33,6 @@ const HomeScreen = (props) => {
           </TouchableOpacity>
           <Foot />
         </View>
-        <Messages />
-      </Provider>
-
   )
 }
 
