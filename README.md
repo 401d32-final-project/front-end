@@ -10,3 +10,6 @@
 - It will feature a chat room function
 _ It will be modile first
 _ Tech: node.js, react, react-native, Oauth, socket.io
+
+## Database Entity-Relationship-Diagram
+- Look to assets folder, EDR is located there. 
