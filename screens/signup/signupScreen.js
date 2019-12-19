@@ -4,10 +4,17 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Text, TextInput, Button} from 'react-native';
 import t from 'tcomb-form-native';
 import superagent from 'superagent';
+import 'tcomb-validation';
+
+const Email = t.refinement(t.String, email => {
+  const reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/; /
+  return reg.test(email)
+  });
+
 const User = t.struct({
     username: t.String,
     password: t.String,
-    email: t.String
+    email: Email,
   });
 
 const Form = t.form.Form;
@@ -35,11 +42,14 @@ export default class Signup extends Component{
   }
   handleSubmit = () => {
     const value = this._form.getValue();
-    superagent.post('https://news-hub-401-final.herokuapp.com/signup')
+    if (email){
+      superagent.post('https://news-hub-401-final.herokuapp.com/signup')
       .send(value)
       .then((response) => {
         this.props.navigation.navigate('Home', { token: response.text });
-      });
+      })} else {
+        return options.fields.email.error;
+      };
   }
   render(){
     return(

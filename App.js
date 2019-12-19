@@ -20,7 +20,7 @@ const navigator = createStackNavigator(
     // FoxNews: Fox,
     // NewYork: NY,
     // BritishNews: BBC,
-    SignUp: SignUpScreen
+    SignUp: SignUpScreen,
   },
   {
     initialRouteName: 'SignIn',

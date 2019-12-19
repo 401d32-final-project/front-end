@@ -2,6 +2,7 @@ import React from 'react';
 import {ScrollView,View,  Text, StyleSheet, Button, Image, TouchableOpacity, ActivityIndicator, Linking} from 'react-native';
 import Expo from 'expo'
 import { Divider } from 'react-native-elements';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 
  class CNN extends React.Component {
 
@@ -38,8 +39,8 @@ import { Divider } from 'react-native-elements';
         </View>
       )
     } else {
-      let headlines = this.state.dataSource.map((value,key) => {
-        return (<View key={key}>
+      let headlines = this.state.dataSource.map((value, i) => {
+        return (<View key={i}>
           <Text style={styles.title}>{value.title}</Text>
           <Divider style={styles.divider}/>
           <Text style={styles.description}>{value.description}</Text>
@@ -48,6 +49,31 @@ import { Divider } from 'react-native-elements';
             Linking.openURL(`${value.url}`)
           }
           }>Link to the Article</Text>
+          <TouchableHighlight key={i} onPress={async () => {
+            const response = await fetch('/save-article', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: {
+                userId,
+                headline: value.title,
+                description: value.description,
+                url: value.url,
+                source: value.source.name,
+              }
+            })
+            if (response.status === 201) {
+              alert('Article Saved!')
+            } else {
+              alert('DENIED!')
+            }
+            }
+          
+            // json.stringify(this.state.dataSource[i])
+          }>
+            <Text>Save Article</Text>
+          </TouchableHighlight>
         </View>)
       })
       return (

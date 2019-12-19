@@ -9,6 +9,7 @@ const User = t.struct({
   // changed this from email to username because it makes more sense
   username: t.String,
   password: t.String,
+  rememberMe: t.Boolean
 });
 
 export default class goodForm extends Component {
