@@ -6,6 +6,7 @@ import Expo from 'expo'
 import Head from '../components/header';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import Foot from '../components/footer'
+import Messages from '../store-messages';
 
 const HomeScreen = (props) => {
     // if (!props.navigation.state.params.token) {
@@ -27,9 +28,12 @@ const HomeScreen = (props) => {
           />
         </TouchableOpacity>
         <Foot />
+        
       </View>
-    )
-  }
+
+  )
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -48,4 +52,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HomeScreen
+export default HomeScreen;

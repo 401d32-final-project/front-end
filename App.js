@@ -9,6 +9,7 @@ import SourceScreen from './screens/sourceScreen'
 import AP from './screens/newsPages/ap';
 import CNN from './screens/newsPages/cnn';
 import SignUpScreen from './screens/signup/signupScreen';
+import Messages from './store-messages';
 
 const navigator = createStackNavigator(
   {
@@ -17,6 +18,7 @@ const navigator = createStackNavigator(
     Sources: SourceScreen,
     AssociatePress: AP,
     CentralNews: CNN,
+    Messages: Messages,
     // FoxNews: Fox,
     // NewYork: NY,
     // BritishNews: BBC,
