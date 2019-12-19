@@ -8,6 +8,10 @@ import { Header } from 'react-native/Libraries/NewAppScreen';
 import Foot from '../components/footer'
 
 const HomeScreen = (props) => {
+    // if (!props.navigation.state.params.token) {
+    //   props.navigation.navigate('SignInScreen');
+    // }
+    // console.log(props.navigation.state.params.token);
     return (
       <View style={styles.container}>
         <Head />
