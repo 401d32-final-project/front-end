@@ -10,6 +10,10 @@ import Search from '../components/searchBar'
 import { LinearGradient } from 'expo'
 
 const HomeScreen = (props) => {
+    // if (!props.navigation.state.params.token) {
+    //   props.navigation.navigate('SignInScreen');
+    // }
+    // console.log(props.navigation.state.params.token);
     return (
       <View style={styles.container}>
       <Search />

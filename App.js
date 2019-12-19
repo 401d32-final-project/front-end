@@ -6,12 +6,14 @@ import SignInScreen from './screens/signinScreen';
 import Expo from 'expo'
 import HomeScreen from './screens/homeScreen';
 import SourceScreen from './screens/sourceScreen'
+import SignUpScreen from './screens/signup/signupScreen';
 
 const navigator = createStackNavigator(
   {
     SignIn:  SignInScreen,
     Home: HomeScreen,
     Sources: SourceScreen,
+    SignUp: SignUpScreen
   },
   {
     initialRouteName: 'SignIn',

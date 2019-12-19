@@ -6,7 +6,8 @@ import t from 'tcomb-form-native';
 const Form = t.form.Form;
 
 const User = t.struct({
-  email: t.String,
+  // changed this from email to username because it makes more sense
+  username: t.String,
   password: t.String,
 });
 
