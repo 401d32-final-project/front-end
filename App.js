@@ -18,7 +18,7 @@ const navigator = createStackNavigator(
     Sources: SourceScreen,
     AssociatePress: AP,
     CentralNews: CNN,
-    Messages: Messages,
+    // Messages: Messages,
     // FoxNews: Fox,
     // NewYork: NY,
     // BritishNews: BBC,

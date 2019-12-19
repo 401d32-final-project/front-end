@@ -6,7 +6,11 @@ import Expo from 'expo'
 import Head from '../components/header';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import Foot from '../components/footer'
-import Messages from '../store-messages';
+import Messages from '../messages';
+import createStore from '../store-messages';
+import { Provider } from 'react-redux';
+
+const store = createStore();
 
 const HomeScreen = (props) => {
     // if (!props.navigation.state.params.token) {
@@ -14,22 +18,24 @@ const HomeScreen = (props) => {
     // }
     // console.log(props.navigation.state.params.token);
     return (
-      <View style={styles.container}>
-        <Head />
-        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
-          <Image 
-            source={require('../assets/CNN.png')}
-          />
-        </TouchableOpacity>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Head />
+          <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
+            <Image 
+              source={require('../assets/CNN.png')}
+            />
+          </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('SignIn')}>
-        <Image 
-            source={require('../assets/placeholder.png')}
-          />
-        </TouchableOpacity>
-        <Foot />
-        
-      </View>
+          <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('SignIn')}>
+          <Image 
+              source={require('../assets/placeholder.png')}
+            />
+          </TouchableOpacity>
+          <Foot />
+        </View>
+        <Messages />
+      </Provider>
 
   )
 }

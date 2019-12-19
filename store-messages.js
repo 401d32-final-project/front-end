@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 
 export const actions = {
-  subsbribeToMessages: () => (dispatch) => {
+  subscribeToMessages: () => (dispatch) => {
     const socket = io('https://news-hub-401-final.herokuapp.com')
     socket.on('MESSAGE', (message) => {
       dispatch(actions.addMessage(message));

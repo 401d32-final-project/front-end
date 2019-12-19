@@ -2,28 +2,29 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, StatusBar, View, Text, Button, FlatList } from 'react-native';
 
-import { actions } from './store';
+import { actions } from './store-messages';
 
 const Messages = (props) => {
   useEffect(() => {
     props.subscribeToMessages();
     props.fetchMessages();
   }, []);
+  console.log(props);
   return(
     <View style={styles.container}>
-      <Text>Messages</Text>
+      <Text>{Messages}</Text>
       <FlatList 
         data={props.message}
         keyExtractor={item => item._id}
-        renderItem={({ item }) => {
-          return <Text>{item.text} {item.createdAt}</Text>
+        renderprops={({ item }) => {
+          return <Text>{item.message} {item.createdAt}</Text>
         }} 
       />
     </View>
   )
 }
 
-const styles = StyleSheet.creates({
+const styles = StyleSheet.create({
   container: {
     flex: 1, 
     backgroundColor: '#fff',
