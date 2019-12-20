@@ -26,9 +26,6 @@ const navigator = createStackNavigator(
   },
   {
     initialRouteName: 'SignIn',
-    // defaultNavigationOptions: {
-    //   title: 'App',
-    // },
   },
 );
 

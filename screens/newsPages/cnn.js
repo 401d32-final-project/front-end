@@ -58,6 +58,11 @@ import Head from '../../components/header';
             Linking.openURL(`${value.url}`)
           }
         }>Link to the Article</Text>
+        {/* <TouchableOpacity>
+          <Image
+            source={require('../../assets/saved')}
+          />
+        </TouchableOpacity> */}
         </View>)
       })
       return (
@@ -67,7 +72,7 @@ import Head from '../../components/header';
           <ScrollView style={styles.container}>
             <Head />
             <Image 
-              style={{marginTop: 20}}
+              style={{marginTop: 20, marginLeft:"auto", marginRight:"auto",}}
               source={require('../../assets/CNN.png')}
             />
             {headlines}
@@ -106,7 +111,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   url: {
-    // marginLeft:"auto",
     marginRight:"auto",
     marginTop:0,
     marginBottom:20,
