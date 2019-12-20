@@ -1,8 +1,10 @@
 import React from 'react';
-import {ScrollView,View,  Text, StyleSheet, Button, Image, TouchableOpacity, ActivityIndicator, Linking, ImageBackground} from 'react-native';
+import { connect } from 'react-redux';
+import {ScrollView,View,  Text, StyleSheet, Button, Image, TouchableHighlight, ActivityIndicator, Linking, ImageBackground} from 'react-native';
 import Expo from 'expo'
 import { Divider } from 'react-native-elements';
 import Head from '../../components/header';
+import superagent from 'superagent';
 
  class CNN extends React.Component {
 
@@ -31,7 +33,6 @@ import Head from '../../components/header';
   }
 
   render() {
-    console.log(this.state.dataSource)
     if(this.state.isLoading) {
       return (
         <View style={styles.container}>
@@ -47,8 +48,8 @@ import Head from '../../components/header';
         </View>
       )
     } else {
-      let headlines = this.state.dataSource.map((value,key) => {
-        return (<View key={key}>
+      let headlines = this.state.dataSource.map((value, i) => {
+        return (<View key={i}>
           <Text style={styles.title}>{value.title}</Text>
           <Divider style={styles.divider}/>
           <Text style={styles.description}>{value.description}</Text>
@@ -58,11 +59,37 @@ import Head from '../../components/header';
             Linking.openURL(`${value.url}`)
           }
         }>Link to the Article</Text>
+
         {/* <TouchableOpacity>
           <Image
             source={require('../../assets/saved')}
           />
         </TouchableOpacity> */}
+
+        <TouchableHighlight key={i} onPress={() => {
+          const body = {
+            userId: this.props.user.id,
+            headline: value.title,
+            description: value.description,
+            url: value.url,
+            source: value.source.name,
+          };
+
+          superagent.post('http://172.16.0.214:3000/save-article')
+            .send(body)
+            .then((response) => {
+              if (response.status === 201) {
+                alert('Article Saved!')
+              } else {
+                alert('DENIED!')
+              }
+            });
+          }
+          // json.stringify(this.state.dataSource[i])
+        }>
+          <Text>Save Article</Text>
+        </TouchableHighlight>
+
         </View>)
       })
       return (
@@ -126,4 +153,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default CNN;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, null)(CNN);

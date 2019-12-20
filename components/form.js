@@ -12,25 +12,29 @@ const User = t.struct({
 });
 
 export default class goodForm extends Component {
-    render() {
-      return (
-        <View  style={styles.container}>
-          <View>
-            <Form type={User} />
-          </View>
-        </View>
+  constructor(props) {
+    super(props);
+  };
 
-      );
-    }
+  render() {
+    const styles = StyleSheet.create({
+      container: {
+        justifyContent: 'center',
+        marginTop: 50,
+        padding: 20,
+        backgroundColor: 'rgba(52, 52, 52, .0)'
+      }
+    });
+
+    return (
+      <View  style={styles.container}>
+        <Form 
+          type={User} 
+          ref={this.props.reference}
+        />
+      </View>
+    );
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      justifyContent: 'center',
-      marginTop: 50,
-      padding: 20,
-      backgroundColor: 'rgba(52, 52, 52, .0)'
-    },
-  });
+}
 
   

@@ -6,6 +6,6 @@ async function fetchHeadlines(req, async, res){
     const newsData = await fetch('https://news-hub-401-final.herokuapp.com/headlines');
     return newsData;
   } catch (error){
-    console.error(error)
-  };
+    console.error(error);
+  }
 }
