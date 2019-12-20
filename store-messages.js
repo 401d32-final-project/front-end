@@ -43,10 +43,11 @@ export const actions = {
 };
 
 //REDUCERS 
-const userReducer = (state ={}, action)=>{
+const userReducer = (state = {}, action)=>{
   switch (action.type) {
   case 'STORE_ID':
-    return action.payload;
+    console.log(action);
+    return { id: action.payload };
   default:
     return state;
   }

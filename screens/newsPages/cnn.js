@@ -4,6 +4,7 @@ import {ScrollView,View,  Text, StyleSheet, Button, Image, TouchableHighlight, A
 import Expo from 'expo'
 import { Divider } from 'react-native-elements';
 import Head from '../../components/header';
+import superagent from 'superagent';
 
  class CNN extends React.Component {
 
@@ -32,7 +33,6 @@ import Head from '../../components/header';
   }
 
   render() {
-    console.log(this.props.user);
     if(this.state.isLoading) {
       return (
         <View style={styles.container}>
@@ -59,27 +59,24 @@ import Head from '../../components/header';
             Linking.openURL(`${value.url}`)
           }
         }>Link to the Article</Text>
-        <TouchableHighlight key={i} onPress={async () => {
-          console.log(this.props.user.id);
-          const response = await fetch('/save-article', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: {
-              userId: this.props.user.id,
-              headline: value.title,
-              description: value.description,
-              url: value.url,
-              source: value.source.name,
-            }
-          })
-          console.log('here', response);
-          if (response.status === 201) {
-            alert('Article Saved!')
-          } else {
-            alert('DENIED!')
-          }
+        <TouchableHighlight key={i} onPress={() => {
+          const body = {
+            userId: this.props.user.id,
+            headline: value.title,
+            description: value.description,
+            url: value.url,
+            source: value.source.name,
+          };
+
+          superagent.post('http://172.16.0.214:3000/save-article')
+            .send(body)
+            .then((response) => {
+              if (response.status === 201) {
+                alert('Article Saved!')
+              } else {
+                alert('DENIED!')
+              }
+            });
           }
           // json.stringify(this.state.dataSource[i])
         }>
