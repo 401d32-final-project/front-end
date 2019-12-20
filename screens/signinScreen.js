@@ -1,9 +1,44 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {View, Text, StyleSheet, Button, Image, KeyboardAvoidingView, ScrollView, ImageBackground, TouchableOpacity} from 'react-native';
-import Form from '../components/form';
+// import Form from '../components/form';
+import { actions } from '../store-messages';
+import t from 'tcomb-form-native';
+import superagent from 'superagent';
+import { Buffer } from 'buffer';
 
-const RegisterComponent = (props) => {
-  return(
+const User = t.struct({
+  username: t.String,
+  password: t.String,
+});
+
+const Form = t.form.Form;
+
+const options = {
+  fields: {
+    username: {
+      error: 'Please Enter a UserName'
+      },
+    password: {
+      error: 'Please Enter a Password'
+      },
+    },
+  }
+
+class RegisterComponent extends React.Component {
+  handleSignin = () =>{
+    const value = this._form.getValue();
+    var auth = 'Basic ' + new Buffer(value.username + ':' + value.password).toString('base64');
+    superagent.post('http://172.16.0.214:3000/signin')
+      .set('Authorization', auth)
+      .then((response) => {
+        console.log(response);
+        this.props.storeId(id);
+        this.props.navigation.navigate('Home');
+      });
+  }
+  render() {
+    return(
       <KeyboardAvoidingView 
       behavior="padding" enabled
       style={{ flex: 1}}
@@ -12,27 +47,32 @@ const RegisterComponent = (props) => {
         <ImageBackground
           source={require('../assets/background2.png')}
           style={{width: '100%', height: '100%'}}
-        >
+          >
           <View>
             <Image 
               style={{ marginLeft:"auto", marginRight:"auto",marginTop:50, }}
               source={require('../assets/newshub.png')}
               />
-            <Form 
+            <Form
+              type={User}
               styles={styles.input}
+              ref={c => this._form = c}
+              options={options}
             />
-            <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Home')}>
+            {/* <TouchableOpacity style={styles.button} onPress={() => this..navigation.navigate('Home')}> */}
+            <TouchableOpacity style={styles.button} 
+            onPress={this.handleSignin}>
               <Text style={styles.textStyle}>Sign In</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('SignUp')}>
+            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('SignUp')}>
               <Text style={styles.textStyle}>Sign Up</Text>
             </TouchableOpacity>
           </View>
           </ImageBackground>
         </ScrollView>
       </KeyboardAvoidingView>
-
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -40,7 +80,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: 20,
     alignItems:"center",
-    fontFamily: "monospace"
+    // fontFamily: "monospace"
   },
   button: {
     marginLeft:"auto",
@@ -48,12 +88,16 @@ const styles = StyleSheet.create({
     marginTop:0,
     marginBottom:20,
     fontSize: 50,
-    alignItems:"center"
+    alignItems:"center",
     backgroundColor: "#FFDAB9",
     borderRadius: 50,
     padding: 5,
   }
 
-})
+});
 
-export default RegisterComponent
+const mapDispatchToProps = (dispatch) => ({
+  storeId: (id) => dispatch(actions.storeId(id)),
+});
+
+export default connect(null, mapDispatchToProps)(RegisterComponent);
