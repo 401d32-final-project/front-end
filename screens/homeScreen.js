@@ -5,6 +5,8 @@ import {createAppContainer, StackNavigator} from 'react-navigation';
 import Expo from 'expo'
 import Head from '../components/header';
 import { Header } from 'react-native/Libraries/NewAppScreen';
+
+
 import Foot from '../components/footer'
 import Messages from '../messages';
 import createStore from '../store-messages';
@@ -12,11 +14,8 @@ import { Provider } from 'react-redux';
 
 const store = createStore();
 
+
 const HomeScreen = (props) => {
-    // if (!props.navigation.state.params.token) {
-    //   props.navigation.navigate('SignInScreen');
-    // }
-    // console.log(props.navigation.state.params.token);
     return (
       <View style={styles.container}>
         <ImageBackground
@@ -26,7 +25,11 @@ const HomeScreen = (props) => {
           <Head />
           <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Sources')}>
             <Image 
+
+              source={require('../assets/news.png')}
+
               source={require('../assets/CNN.png')}
+
 
               />
           </TouchableOpacity>

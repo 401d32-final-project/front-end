@@ -97,11 +97,15 @@ const styles = StyleSheet.create({
     padding: 5,
   }
 
+})
+
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
   storeId: (id) => dispatch(actions.storeId(id)),
 });
+
 
 // export default connect(null, mapDispatchToProps)(RegisterComponent);
 export default connect(null, mapDispatchToProps)(Signin);

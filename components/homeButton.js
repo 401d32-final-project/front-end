@@ -21,6 +21,7 @@ const MyBackButton = (props) => {
   const styles = StyleSheet.create({
     icon: {
       marginBottom: 20,
+      
         
     }
 })

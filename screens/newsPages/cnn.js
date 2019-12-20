@@ -59,6 +59,13 @@ import superagent from 'superagent';
             Linking.openURL(`${value.url}`)
           }
         }>Link to the Article</Text>
+
+        {/* <TouchableOpacity>
+          <Image
+            source={require('../../assets/saved')}
+          />
+        </TouchableOpacity> */}
+
         <TouchableHighlight key={i} onPress={() => {
           const body = {
             userId: this.props.user.id,
@@ -82,6 +89,7 @@ import superagent from 'superagent';
         }>
           <Text>Save Article</Text>
         </TouchableHighlight>
+
         </View>)
       })
       return (
@@ -91,7 +99,7 @@ import superagent from 'superagent';
           <ScrollView style={styles.container}>
             <Head />
             <Image 
-              style={{marginTop: 20}}
+              style={{marginTop: 20, marginLeft:"auto", marginRight:"auto",}}
               source={require('../../assets/CNN.png')}
             />
             {headlines}
@@ -130,7 +138,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   url: {
-    // marginLeft:"auto",
     marginRight:"auto",
     marginTop:0,
     marginBottom:20,

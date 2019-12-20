@@ -8,9 +8,13 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "buffer": "^5.4.3",
+
+    "dotenv": "^8.2.0",
     "eslint": "^6.7.2",
     "expo": "~36.0.0",
+    "jest": "^24.9.0",
+    "buffer": "^5.4.3",
+    "eslint": "^6.7.2",
     "expo-jwt": "^1.2.0",
     "link": "^0.1.5",
     "native-base": "^2.13.8",
