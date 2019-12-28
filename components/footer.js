@@ -10,6 +10,7 @@ const Foot = () => {
     <View style={styles.container}>
       <View >
         <Text style={styles.text}>NewsHub Inc. {'\u00A9'}2019</Text>
+        <Text>https://canvas.instructure.com/courses/1725059/assignments/12819533</Text>
       </View>
     </View>
   )
