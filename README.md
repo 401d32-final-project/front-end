@@ -13,3 +13,6 @@ _ Tech: node.js, react, react-native, Oauth, socket.io
 
 ## Database Entity-Relationship-Diagram
 - Look to assets folder, EDR is located there. 
+
+## Link for turn in 
+- https://canvas.instructure.com/courses/1725059/assignments/12819533 

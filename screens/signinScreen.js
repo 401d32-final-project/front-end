@@ -30,7 +30,7 @@ class Signin extends React.Component {
   handleSignin = () =>{
     const value = this._form.getValue();
     console.log('value:', value);
-    var auth = 'Basic ' + new Buffer(value.username + ':' + value.password).toString('base64');
+    var auth = 'Basic ' + new Buffer(User.username + ':' + User.password).toString('base64');
     superagent.post('http://172.16.0.214:3000/signin')
       .set('Authorization', auth)
       .then((response) => {
@@ -99,8 +99,6 @@ const styles = StyleSheet.create({
 
 })
 
-
-});
 
 const mapDispatchToProps = (dispatch) => ({
   storeId: (id) => dispatch(actions.storeId(id)),
